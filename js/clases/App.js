@@ -1,13 +1,5 @@
 import { datosCita, nuevaCita } from "../funciones.js";
-import { 
-    mascotaInput, 
-    propietarioInput, 
-    telefonoInput, 
-    fechaInput, 
-    horaInput, 
-    sintomasInput, 
-    formulario
-} from "../selectores.js";
+import { formulario } from "../selectores.js";
 import Database from './Database.js';
 
 class App {
@@ -16,18 +8,16 @@ class App {
     }
 
     initApp() {
-        mascotaInput.addEventListener('change', datosCita);
-        propietarioInput.addEventListener('change', datosCita);
-        telefonoInput.addEventListener('change', datosCita);
-        fechaInput.addEventListener('change', datosCita);
-        horaInput.addEventListener('change', datosCita);
-        sintomasInput.addEventListener('change', datosCita);
+
+        formulario.addEventListener('change', (evt) => {
+            datosCita(evt);
+        });
 
         // Formulario para nuevas citas
         formulario.addEventListener('submit', nuevaCita);
 
         window.onload = () => {
-            const dataBase = new Database();
+            const database = new Database();
         };
     }
 }

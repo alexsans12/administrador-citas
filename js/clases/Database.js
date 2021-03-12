@@ -19,7 +19,7 @@ class Database {
         };
         
         // Definir el schema
-        crearDB.onupgradeneeded = function (e) {
+        crearDB.onupgradeneeded = (e) => {
             const db = e.target.result;
             
             const objectStore = db.createObjectStore("citas", {

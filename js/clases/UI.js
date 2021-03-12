@@ -43,7 +43,7 @@ class UI {
         const fnTextoHeading = this.textoHeading;
 
         const total = objectStore.count();
-        total.onsuccess = function () {
+        total.onsuccess = () => {
             fnTextoHeading(total.result);
         };
 
@@ -107,7 +107,7 @@ class UI {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>`;
 
-                btnEliminar.onclick = () => eliminarCita(id);
+                btnEliminar.addEventListener('click', () => eliminarCita(id));
 
                 // Boton editar cita
                 const btnEditar = document.createElement("button");
@@ -117,7 +117,7 @@ class UI {
             </svg>`;
 
                 const cita = cursor.value;
-                btnEditar.onclick = () => cargarEdicion(cita);
+                btnEditar.addEventListener('click', () => cargarEdicion(cita));
 
                 // Agregar los parrafos al divCita
                 divCita.appendChild(mascotaParrafo);
@@ -150,9 +150,7 @@ class UI {
     }
 
     limpiarHTML() {
-        while (contenedorCitas.firstChild) {
-            contenedorCitas.removeChild(contenedorCitas.firstChild);
-        }
+        contenedorCitas.textContent = '';
     }
 }
 

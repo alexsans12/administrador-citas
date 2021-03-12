@@ -28,12 +28,12 @@ const citaObj = {
 };
 
 // Agrega datos al obj cita
-export function datosCita(evt) {
+export const datosCita = (evt) => {
     citaObj[evt.target.name] = evt.target.value;
-}
+};
 
 // Valida y agrega una cita a la clase de citas
-export function nuevaCita(evt) {
+export const nuevaCita = (evt) => {
     evt.preventDefault();
 
     // Extraer inforamación del objeto de cita
@@ -109,18 +109,18 @@ export function nuevaCita(evt) {
 
     // Reiniciar el fomulario
     formulario.reset();
-}
+};
 
-export function reiniarObjeto() {
+export const reiniarObjeto = () => {
     citaObj.mascota = "";
     citaObj.propietario = "";
     citaObj.telefono = "";
     citaObj.fecha = "";
     citaObj.hora = "";
     citaObj.sintomas = "";
-}
+};
 
-export function eliminarCita(id) {
+export const eliminarCita = (id) => {
     // Eliminar cita
     const transaction = DB.transaction(["citas"], "readwrite");
     const objectStore = transaction.objectStore("citas");
@@ -139,10 +139,10 @@ export function eliminarCita(id) {
         // Muesta un mensaje
         ui.imprimirAlerta("Ocurrio un error al eliminar la cita", "cita");
     };
-}
+};
 
 // Carga los datos y el modo edición
-export function cargarEdicion(cita) {
+export const cargarEdicion = (cita) => {
     // Extraer inforamación del objeto de cita
     const { mascota, propietario, telefono, fecha, hora, sintomas, id } = cita;
 
@@ -167,4 +167,4 @@ export function cargarEdicion(cita) {
         "Guardar cambios";
 
     editando = true;
-}
+};
